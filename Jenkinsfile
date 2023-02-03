@@ -21,7 +21,7 @@ pipeline {
                 }
             }
 
-        stage('Plan') {
+        stage('terraform Plan') {
             steps {
                 sh 'pwd;cd terraform/ ; terraform init'
                 sh "pwd;cd terraform/ ; terraform plan -out tfplan"
@@ -44,7 +44,7 @@ pipeline {
            }
        }
 
-        stage('Apply') {
+        stage('terraform Apply') {
             steps {
                 sh "pwd;cd terraform/ ; terraform apply -input=false tfplan"
             }
